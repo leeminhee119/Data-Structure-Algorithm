@@ -1,15 +1,14 @@
-//2018110988 ÀÌ¹ÎÈñ ±¹Á¦Åë»óÇÐ°ú
-//ÀÚ·á±¸Á¶¹×¾Ë°í¸®Áò °úÁ¦ - ½ºÅÃ
-//½Ç½À°úÁ¦ 1¹ø - ½ºÅÃ ±¸Çö @ Stack.java (Main.java ¿¡¼­ ½ÇÇà)
-//½Ç½À°úÁ¦ 2¹ø - ÁßÀ§Ç¥±â¹ý => ÈÄÀ§Ç¥±â¹ý º¯È¯ @ OperatorStack.java (Main.java ¿¡¼­ ½ÇÇà)
-//½Ç½À°úÁ¦ 3¹ø - ÈÄÀ§Ç¥±â¹ý ½Ä ÀÔ·Â, °è»ê Ãâ·Â @ CalculatePostfix.java (Main.java ¿¡¼­ ½ÇÇà)
+//ìžë£Œêµ¬ì¡°ë°ì•Œê³ ë¦¬ì¦˜ ê³¼ì œ - ìŠ¤íƒ
+//ì‹¤ìŠµê³¼ì œ 1ë²ˆ - ìŠ¤íƒ êµ¬í˜„ @ Stack.java (Main.java ì—ì„œ ì‹¤í–‰)
+//ì‹¤ìŠµê³¼ì œ 2ë²ˆ - ì¤‘ìœ„í‘œê¸°ë²• => í›„ìœ„í‘œê¸°ë²• ë³€í™˜ @ OperatorStack.java (Main.java ì—ì„œ ì‹¤í–‰)
+//ì‹¤ìŠµê³¼ì œ 3ë²ˆ - í›„ìœ„í‘œê¸°ë²• ì‹ ìž…ë ¥, ê³„ì‚° ì¶œë ¥ @ CalculatePostfix.java (Main.java ì—ì„œ ì‹¤í–‰)
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
-	//½Ç½À°úÁ¦ 1 ½ºÅÃ ±â´É ±¸Çö
-		System.out.println("*** ½Ç½À°úÁ¦ 1 ½ºÅÃ ±â´É ±¸Çö ***");
+	//ì‹¤ìŠµê³¼ì œ 1 ìŠ¤íƒ ê¸°ëŠ¥ êµ¬í˜„
+		System.out.println("*** ì‹¤ìŠµê³¼ì œ 1 ìŠ¤íƒ ê¸°ëŠ¥ êµ¬í˜„ ***");
 		Stack stack = new Stack();
 		stack.push("red");
 		stack.push("orange");
@@ -21,28 +20,28 @@ public class Main {
 		
 		stack.push("green");
 		stack.print();
-		System.out.println("ÇöÀç ½ºÅÃÀÇ top¿ø¼Ò: " + stack.peek());
+		System.out.println("í˜„ìž¬ ìŠ¤íƒì˜ topì›ì†Œ: " + stack.peek());
 		System.out.println();
 		
-	//½Ç½À°úÁ¦2 ÁßÀ§->ÈÄÀ§
-		System.out.println("*** ½Ç½À°úÁ¦2 ÁßÀ§->ÈÄÀ§ ***");
+	//ì‹¤ìŠµê³¼ì œ2 ì¤‘ìœ„->í›„ìœ„
+		System.out.println("*** ì‹¤ìŠµê³¼ì œ2 ì¤‘ìœ„->í›„ìœ„ ***");
 		OperatorStack ops = new OperatorStack();
 		System.out.print("A+B*(C+D-E)/(F+G)  =  ");
-		ops.change("A+B*(C+D-E)/(F+G)");  // ÁßÀ§Ç¥±â¹ý ½ÄÀ» ÀÎÀÚ·Î ¸Þ¼Òµå ½ÇÇà
+		ops.change("A+B*(C+D-E)/(F+G)");  // ì¤‘ìœ„í‘œê¸°ë²• ì‹ì„ ì¸ìžë¡œ ë©”ì†Œë“œ ì‹¤í–‰
 		System.out.println();
 		
-	//½Ç½À°úÁ¦3 ÈÄÀ§Ç¥±â¹ý ½Ä ÀÔ·Â¹Þ°í ÇØ´ç °á°ú¹° °è»ê Ãâ·Â
+	//ì‹¤ìŠµê³¼ì œ3 í›„ìœ„í‘œê¸°ë²• ì‹ ìž…ë ¥ë°›ê³  í•´ë‹¹ ê²°ê³¼ë¬¼ ê³„ì‚° ì¶œë ¥
 		
-		// ÀÔ·Â Çü½Ä : ¿¬»êÀÚ, ÇÇ¿¬»êÀÚ ÇÏ³ª ÀÔ·ÂÇÒ ¶§¸¶´Ù "°ø¹éÀ¸·Î" ±¸ºÐ !!
-		// (µÎ ÀÚ¸® ÀÌ»óÀÇ ÇÇ¿¬»êÀÚ¸¦ ÇÏ³ªÀÇ ¼ýÀÚ·Î ÀÎ½ÄÇÏ±â À§ÇØ °ø¹éÀ¸·Î ±¸ºÐ)
-		// ÀÔ·Â ¿¹) 10 9 31 + 5 / -   [ Áï 10-((9+31)/5) ]
+		// ìž…ë ¥ í˜•ì‹ : ì—°ì‚°ìž, í”¼ì—°ì‚°ìž í•˜ë‚˜ ìž…ë ¥í•  ë•Œë§ˆë‹¤ "ê³µë°±ìœ¼ë¡œ" êµ¬ë¶„ !!
+		// (ë‘ ìžë¦¬ ì´ìƒì˜ í”¼ì—°ì‚°ìžë¥¼ í•˜ë‚˜ì˜ ìˆ«ìžë¡œ ì¸ì‹í•˜ê¸° ìœ„í•´ ê³µë°±ìœ¼ë¡œ êµ¬ë¶„)
+		// ìž…ë ¥ ì˜ˆ) 10 9 31 + 5 / -   [ ì¦‰ 10-((9+31)/5) ]
 		
-		// ´Ü, ³ª´°¼À °è»êÀº ³ª´©¾î ¶³¾îÁö´Â °æ¿ì¸¸ °í·ÁÇÏ¿© ÀÔ·ÂÇÑ´Ù
+		// ë‹¨, ë‚˜ëˆ—ì…ˆ ê³„ì‚°ì€ ë‚˜ëˆ„ì–´ ë–¨ì–´ì§€ëŠ” ê²½ìš°ë§Œ ê³ ë ¤í•˜ì—¬ ìž…ë ¥í•œë‹¤
 		
-		System.out.println("*** ½Ç½À°úÁ¦3 ÈÄÀ§Ç¥±â¹ý ½Ä °è»ê ***");
+		System.out.println("*** ì‹¤ìŠµê³¼ì œ3 í›„ìœ„í‘œê¸°ë²• ì‹ ê³„ì‚° ***");
 		Scanner sc = new Scanner(System.in);
 		CalculatePostfix cal = new CalculatePostfix();
-		System.out.print("ÈÄÀ§Ç¥±â¹ýÀ¸·Î Ç¥±âÇÑ ½Ä ÀÔ·Â: ");
+		System.out.print("í›„ìœ„í‘œê¸°ë²•ìœ¼ë¡œ í‘œê¸°í•œ ì‹ ìž…ë ¥: ");
 		String eq = sc.nextLine();
 		cal.calculate(eq);
 	}
