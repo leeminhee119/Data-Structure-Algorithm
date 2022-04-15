@@ -1,12 +1,11 @@
 /*
-2018110988 ±¹Á¦Åë»óÇĞ°ú ÀÌ¹ÎÈñ
-mac OS ¸¦ »ç¿ëÇÏ¿© ÄÜ¼ÖÃ¢¿¡ ¹Ù·Î Ãâ·ÂµÇµµ·Ï Çß½À´Ï´Ù.
-2¹ø °úÁ¦ ÀÔ·Â¹æ½ÄÀº º°µµ ÁÖ¼®À» ´Ş¾Æ³õ¾Ò½À´Ï´Ù.
+mac OS ë¥¼ ì‚¬ìš©í•˜ì—¬ ì½˜ì†”ì°½ì— ë°”ë¡œ ì¶œë ¥ë˜ë„ë¡ í–ˆìŠµë‹ˆë‹¤.
+2ë²ˆ ê³¼ì œ ì…ë ¥ë°©ì‹ì€ ë³„ë„ ì£¼ì„ì„ ë‹¬ì•„ë†“ì•˜ìŠµë‹ˆë‹¤.
 
-DNode -> ÀÌÁß¿¬°á¸®½ºÆ®ÀÇ ³ëµå Å¬·¡½º
-Node -> ´Ü¼ø¿¬°á¸®½ºÆ®ÀÇ ³ëµå Å¬·¡½º
-DoublyList -> ÀÌÁß¿¬°á¸®½ºÆ® Å¬·¡½º
-SingleList -> ´Ü¼ø¿¬°á¸®½ºÆ® Å¬·¡½º
+DNode -> ì´ì¤‘ì—°ê²°ë¦¬ìŠ¤íŠ¸ì˜ ë…¸ë“œ í´ë˜ìŠ¤
+Node -> ë‹¨ìˆœì—°ê²°ë¦¬ìŠ¤íŠ¸ì˜ ë…¸ë“œ í´ë˜ìŠ¤
+DoublyList -> ì´ì¤‘ì—°ê²°ë¦¬ìŠ¤íŠ¸ í´ë˜ìŠ¤
+SingleList -> ë‹¨ìˆœì—°ê²°ë¦¬ìŠ¤íŠ¸ í´ë˜ìŠ¤
  */
 
 import java.util.Scanner;
@@ -15,42 +14,42 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
-	//1. ÀÌÁß¿¬°á¸®½ºÆ® ±¸Çö
+	//1. ì´ì¤‘ì—°ê²°ë¦¬ìŠ¤íŠ¸ êµ¬í˜„
 		
 		DoublyList mydll = new DoublyList();
-		mydll.insertAfter("orange", mydll.head); // ¸Ç ¾Õ »ğÀÔ
-		mydll.insertAfter("red", mydll.head); // ¸Ç ¾Õ »ğÀÔ
+		mydll.insertAfter("orange", mydll.head); // ë§¨ ì• ì‚½ì…
+		mydll.insertAfter("red", mydll.head); // ë§¨ ì• ì‚½ì…
 		mydll.print();
 		
-		mydll.insertAfter("yellow", mydll.peek_node("orange")); // orange ´ÙÀ½ »ğÀÔ
-		mydll.insertAfter("pink", mydll.head.getNext()); // ¸Ç ¾Õ ³ëµå ´ÙÀ½ »ğÀÔ
-		mydll.insertBefore("purple", mydll.tail); // ¸Ç ³¡ »ğÀÔ
+		mydll.insertAfter("yellow", mydll.peek_node("orange")); // orange ë‹¤ìŒ ì‚½ì…
+		mydll.insertAfter("pink", mydll.head.getNext()); // ë§¨ ì• ë…¸ë“œ ë‹¤ìŒ ì‚½ì…
+		mydll.insertBefore("purple", mydll.tail); // ë§¨ ë ì‚½ì…
 		mydll.print();
 
-		mydll.insertBefore("navy", mydll.peek_node("purple")); //purple Àü¿¡ »ğÀÔ
+		mydll.insertBefore("navy", mydll.peek_node("purple")); //purple ì „ì— ì‚½ì…
 		mydll.print();
 
-		mydll.delete(mydll.peek_node("pink")); // pink »èÁ¦
-		mydll.delete(mydll.peek_node("red"));  // red »èÁ¦
+		mydll.delete(mydll.peek_node("pink")); // pink ì‚­ì œ
+		mydll.delete(mydll.peek_node("red"));  // red ì‚­ì œ
 		mydll.print();
 		
-		System.out.println("orange ÀÇ ÀÎµ¦½º: "+ mydll.peek_index("orange"));
-		System.out.println("navy ÀÇ ÀÎµ¦½º: "+ mydll.peek_index("navy"));
+		System.out.println("orange ì˜ ì¸ë±ìŠ¤: "+ mydll.peek_index("orange"));
+		System.out.println("navy ì˜ ì¸ë±ìŠ¤: "+ mydll.peek_index("navy"));
 		System.out.println();
 
 		
 	
 		
-	//2. ÇĞ»ıºÎ ÀÔ·Â ¹× Ãâ·Â
-		// ÀüÁ¦: ÀÔ·Â¹Ş´Â ÇĞ»ı ÀÌ¸§ÀÇ °¡³ª´Ù ¼ø¼­´Â ÇĞ¹øÀÇ ¼ø¼­¿Í µ¿ÀÏÇÏ°Ô ÀÔ·ÂÇÑ´Ù
-		//     ex) °­È£µ¿ 123 ÀÌ½Â±â 124 ÇãÁØ 129 => (O)
-		//         °­È£µ¿ 123 ÀÌ½Â±â 129 ÇãÁØ 124 => (X)
-		//     ¸¸¾à ÇĞ¹øÀÇ ¼ø¼­¿Í °¡³ª´Ù ¼ø¼­°¡ ´Ù¸£°Ô ÀÔ·ÂµÇ´Â °æ¿ì (À§ ¿¹ÀÇ µÑÂ° ÁÙ), ÇĞ¹øÀÇ ¼ø¼­¸¦ ¿ì¼±À¸·Î Á¤·ÄÇÑ´Ù.
+	//2. í•™ìƒë¶€ ì…ë ¥ ë° ì¶œë ¥
+		// ì „ì œ: ì…ë ¥ë°›ëŠ” í•™ìƒ ì´ë¦„ì˜ ê°€ë‚˜ë‹¤ ìˆœì„œëŠ” í•™ë²ˆì˜ ìˆœì„œì™€ ë™ì¼í•˜ê²Œ ì…ë ¥í•œë‹¤
+		//     ex) ê°•í˜¸ë™ 123 ì´ìŠ¹ê¸° 124 í—ˆì¤€ 129 => (O)
+		//         ê°•í˜¸ë™ 123 ì´ìŠ¹ê¸° 129 í—ˆì¤€ 124 => (X)
+		//     ë§Œì•½ í•™ë²ˆì˜ ìˆœì„œì™€ ê°€ë‚˜ë‹¤ ìˆœì„œê°€ ë‹¤ë¥´ê²Œ ì…ë ¥ë˜ëŠ” ê²½ìš° (ìœ„ ì˜ˆì˜ ë‘˜ì§¸ ì¤„), í•™ë²ˆì˜ ìˆœì„œë¥¼ ìš°ì„ ìœ¼ë¡œ ì •ë ¬í•œë‹¤.
 		
 		SingleList students = new SingleList();
 		
-		System.out.println("**************** ÇĞ»ıºÎ ******************");
-		System.out.println("ÀÌ¸§°ú ÇĞ¹ø(3ÀÚ¸®)À» << °ø¹éÀ¸·Î ±¸ºĞÇÏ¿© >> ÀÔ·Â:");
+		System.out.println("**************** í•™ìƒë¶€ ******************");
+		System.out.println("ì´ë¦„ê³¼ í•™ë²ˆ(3ìë¦¬)ì„ << ê³µë°±ìœ¼ë¡œ êµ¬ë¶„í•˜ì—¬ >> ì…ë ¥:");
 		
 		while (true) {
 			String st = scanner.nextLine();
@@ -58,18 +57,18 @@ public class Main {
 				students.print();
 				System.out.println();
 			}
-			else if (students.size == 0) { // ºó ¸®½ºÆ®¿¡ ÀúÀå½Ã.
+			else if (students.size == 0) { // ë¹ˆ ë¦¬ìŠ¤íŠ¸ì— ì €ì¥ì‹œ.
 				students.setFirst(new Node(st, null));
 			}
 			else { 
-				//ÀÌ¹Ì Á¸ÀçÇÏ´Â ÇĞ»ıÀ» ¶Ç ÀÔ·ÂÇß´Ù¸é ÇØ´ç ÇĞ»ı ³ëµå »èÁ¦.
-				if (students.search(st) == 0) { // ¸Ç ¾Õ ÇĞ»ı »èÁ¦½Ã
+				//ì´ë¯¸ ì¡´ì¬í•˜ëŠ” í•™ìƒì„ ë˜ ì…ë ¥í–ˆë‹¤ë©´ í•´ë‹¹ í•™ìƒ ë…¸ë“œ ì‚­ì œ.
+				if (students.search(st) == 0) { // ë§¨ ì• í•™ìƒ ì‚­ì œì‹œ
 					students.deleteFront();
 				}
-				else if (students.search(st) != -1) { // Áß°£ or ³¡ ÇĞ»ı »èÁ¦½Ã
+				else if (students.search(st) != -1) { // ì¤‘ê°„ or ë í•™ìƒ ì‚­ì œì‹œ
 					students.deleteMid(st);
 				}
-				// ÀÌ¹Ì Á¸ÀçÇÏ´Â ÇĞ»ıÀÌ ¾Æ´Ï¶ó »õ·Î¿î ÇĞ»ı ÀÔ·Â½Ã »ğÀÔ.
+				// ì´ë¯¸ ì¡´ì¬í•˜ëŠ” í•™ìƒì´ ì•„ë‹ˆë¼ ìƒˆë¡œìš´ í•™ìƒ ì…ë ¥ì‹œ ì‚½ì….
 				else {
 					Node newNode = new Node(st, null);
 					students.insert(newNode, newNode.getID());
