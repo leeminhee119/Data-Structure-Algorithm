@@ -1,67 +1,66 @@
-// 2018110988 ÀÌ¹ÎÈñ ÀÚ·á±¸Á¶¹×¾Ë°í¸®Áò1 1Â÷°úÁ¦ //
-// ½ÇÇàÇÏ¿© ³ª¿À´Â Ãâ·Â¹®ÀÇ ¾È³»¿¡ µû¶ó ÀÔ·ÂÇÏ½Ã¸é µË´Ï´Ù.
-// ¸Æos¿¡¼­ ÀÛ¾÷ÇÏ¿© ÇÁ·ÎÁ§Æ® ÆÄÀÏ ÀüÃ¼¸¦ ¾ĞÃàÇÏ¿´½À´Ï´Ù.
+// ì‹¤í–‰í•˜ì—¬ ë‚˜ì˜¤ëŠ” ì¶œë ¥ë¬¸ì˜ ì•ˆë‚´ì— ë”°ë¼ ì…ë ¥í•˜ì‹œë©´ ë©ë‹ˆë‹¤.
+// ë§¥osì—ì„œ ì‘ì—…í•˜ì—¬ í”„ë¡œì íŠ¸ íŒŒì¼ ì „ì²´ë¥¼ ì••ì¶•í•˜ì˜€ìŠµë‹ˆë‹¤.
 
 
 import java.util.Scanner;
 
 class myArray <E> {
 	Scanner scanner = new Scanner(System.in);
-	E[] arr;    //¹è¿­ ÀÌ¸§: arr
-	E[] temp; // ¹è¿­ Å©±â È®Àå ¶Ç´Â Ãà¼Ò½Ã »ç¿ëÇÒ ÀÓ½Ã ¹è¿­
-	int size;   //ÃÊ±â µ¥ÀÌÅÍ 0°³
+	E[] arr;    //ë°°ì—´ ì´ë¦„: arr
+	E[] temp; // ë°°ì—´ í¬ê¸° í™•ì¥ ë˜ëŠ” ì¶•ì†Œì‹œ ì‚¬ìš©í•  ì„ì‹œ ë°°ì—´
+	int size;   //ì´ˆê¸° ë°ì´í„° 0ê°œ
 	
 
 	
-	// ¹è¿­ »ı¼ºÇÏ±â
-	myArray(int length) {     //»ı¼ºÀÚ
-		arr = (E[]) new Object[length];   //¹è¿­ÀÇ ÀüÃ¼ Å©±â: length; Object·Î ·¹ÆÛ·±½º ¸¸µç ÈÄ¿¡ (E[])·Î Çüº¯È¯.
-		size = 0;      //ÃÊ±â ¹è¿­ »çÀÌÁî: 0
+	// ë°°ì—´ ìƒì„±í•˜ê¸°
+	myArray(int length) {     //ìƒì„±ì
+		arr = (E[]) new Object[length];   //ë°°ì—´ì˜ ì „ì²´ í¬ê¸°: length; Objectë¡œ ë ˆí¼ëŸ°ìŠ¤ ë§Œë“  í›„ì— (E[])ë¡œ í˜•ë³€í™˜.
+		size = 0;      //ì´ˆê¸° ë°°ì—´ ì‚¬ì´ì¦ˆ: 0
 	}
 	
-	void add(E elem) {    // ÃÊ±â ¹è¿­¿¡ °ªÀ» ÀúÀåÇÒ ¶§ ¾µ ¸Ş¼Òµå
+	void add(E elem) {    // ì´ˆê¸° ë°°ì—´ì— ê°’ì„ ì €ì¥í•  ë•Œ ì“¸ ë©”ì†Œë“œ
 		if (size < arr.length) {
-			arr[size++] = elem;  // arr[size]¿¡ elem ÀúÀå ÈÄ¿¡ size++
+			arr[size++] = elem;  // arr[size]ì— elem ì €ì¥ í›„ì— size++
 		}
 	}
 	
-	// ¹è¿­ È®´ë/Ãà¼Ò ±â´É
+	// ë°°ì—´ í™•ëŒ€/ì¶•ì†Œ ê¸°ëŠ¥
 	void resize(int new_size) {
-		temp = (E[]) new Object[new_size];   // µ¥ÀÌÅÍ¸¦ ÀÓ½Ã·Î ÀúÀåÇØÁÙ new_size Å©±âÀÇ ¹è¿­
+		temp = (E[]) new Object[new_size];   // ë°ì´í„°ë¥¼ ì„ì‹œë¡œ ì €ì¥í•´ì¤„ new_size í¬ê¸°ì˜ ë°°ì—´
 		for (int i=0; i<size; i++) {  
-			temp[i] = arr[i];     // µ¥ÀÌÅÍ ¿Å°ÜÁÖ±â
+			temp[i] = arr[i];     // ë°ì´í„° ì˜®ê²¨ì£¼ê¸°
 		}
-		arr = temp;   // ´Ù½Ã ¿ø·¡ ¹è¿­¿¡ º¹»ç (Å©±â new_size µÊ) => arr°¡ °¡¸®Å°´ø ±âÁ¸ÀÇ ¹è¿­Àº °¡ºñÁö ÄÃ·º¼Ç¿¡ ÀÇÇØ Ã³¸®.
+		arr = temp;   // ë‹¤ì‹œ ì›ë˜ ë°°ì—´ì— ë³µì‚¬ (í¬ê¸° new_size ë¨) => arrê°€ ê°€ë¦¬í‚¤ë˜ ê¸°ì¡´ì˜ ë°°ì—´ì€ ê°€ë¹„ì§€ ì»¬ë ‰ì…˜ì— ì˜í•´ ì²˜ë¦¬.
 	}
 
 	
-	//°ª °¡Á®¿À´Â ¸Ş¼Òµå
+	//ê°’ ê°€ì ¸ì˜¤ëŠ” ë©”ì†Œë“œ
 	E peek(int index) {
 		if ((index >= 0) && (index <= size-1)) {
-			return (E)arr[index];   //Çüº¯È¯
+			return (E)arr[index];   //í˜•ë³€í™˜
 		}
 		else {
 			return null;
 		}
 	}
 	
-	//»ğÀÔ ¸Ş¼Òµå - ³¡¿¡ »ğÀÔ
+	//ì‚½ì… ë©”ì†Œë“œ - ëì— ì‚½ì…
 	void insert_last(E elem) {
 		if (size == arr.length) {  
-			resize(2*size);   //È®Àå (2¹è Å©±âÀÇ »õ·Î¿î ¹è¿­ »ı¼º)
-			arr[size++] = elem;   //size 1 Å°¿ì°í array¿¡ ¿ø¼Ò ÀúÀå.
+			resize(2*size);   //í™•ì¥ (2ë°° í¬ê¸°ì˜ ìƒˆë¡œìš´ ë°°ì—´ ìƒì„±)
+			arr[size++] = elem;   //size 1 í‚¤ìš°ê³  arrayì— ì›ì†Œ ì €ì¥.
 		}
 		else {
 			arr[size++] = elem;    
 		}
 	}
 	
-	//»ğÀÔ ¸Ş¼Òµå - Áß°£¿¡ »ğÀÔ
-	void insert_mid(int k, E elem) {  // k À§Ä¡ (ÀÎµ¦½º)¿¡ elem(¿ø¼Ò) »ğÀÔ.
-		if (size == arr.length) {  //¹è¿­ÀÌ °¡µæ Ã¡À» °æ¿ì (ÇÏ³ª ´õ Ãß°¡½Ã overflow)
-			resize(2*size);   //È®Àå (2¹è Å©±âÀÇ »õ·Î¿î ¹è¿­ »ı¼º)
+	//ì‚½ì… ë©”ì†Œë“œ - ì¤‘ê°„ì— ì‚½ì…
+	void insert_mid(int k, E elem) {  // k ìœ„ì¹˜ (ì¸ë±ìŠ¤)ì— elem(ì›ì†Œ) ì‚½ì….
+		if (size == arr.length) {  //ë°°ì—´ì´ ê°€ë“ ì°¼ì„ ê²½ìš° (í•˜ë‚˜ ë” ì¶”ê°€ì‹œ overflow)
+			resize(2*size);   //í™•ì¥ (2ë°° í¬ê¸°ì˜ ìƒˆë¡œìš´ ë°°ì—´ ìƒì„±)
 			
-			//»õ Ç×¸ñÀÌ µé¾î°¥ ÀÚ¸® (ÀÎµ¦½º k)¸¦ À§ÇØ ¹è¿­ÀÇ ¸¶Áö¸· Ç×¸ñºÎÅÍ k¹øÂ° µ¥ÀÌÅÍ±îÁöÀÇ ¼ø¼­·Î ÇÑ Ä­¾¿ ÀÌµ¿.
+			//ìƒˆ í•­ëª©ì´ ë“¤ì–´ê°ˆ ìë¦¬ (ì¸ë±ìŠ¤ k)ë¥¼ ìœ„í•´ ë°°ì—´ì˜ ë§ˆì§€ë§‰ í•­ëª©ë¶€í„° kë²ˆì§¸ ë°ì´í„°ê¹Œì§€ì˜ ìˆœì„œë¡œ í•œ ì¹¸ì”© ì´ë™.
 			for (int i = size-1; i >= k; i--) {
 				arr[i+1] = arr[i];
 			}
@@ -69,7 +68,7 @@ class myArray <E> {
 			size++;
 		}
 		else {
-			//»ğÀÔÇÒ ÀÚ¸® ¸¸µé¾îÁÖ±â À§ÇØ µÚ¿¡¼­ºÎÅÍ ÇÑÄ­¾¿ ÀÌµ¿
+			//ì‚½ì…í•  ìë¦¬ ë§Œë“¤ì–´ì£¼ê¸° ìœ„í•´ ë’¤ì—ì„œë¶€í„° í•œì¹¸ì”© ì´ë™
 			for (int i = size-1; i >= k; i--) {  
 				arr[i+1] = arr[i];
 			}
@@ -78,29 +77,29 @@ class myArray <E> {
 		}
 	}
 	
-	//»èÁ¦ ¸Ş¼Òµå - ¸Ç ³¡ ¿ø¼Ò »èÁ¦
+	//ì‚­ì œ ë©”ì†Œë“œ - ë§¨ ë ì›ì†Œ ì‚­ì œ
 	void remove_last() {
 		arr[size-1] = null;
 		size --;
 		
 		
-		// »ç¿ë ºñÀ² 25%ÀÌÇÏ¶ó¸é Å©±â Àı¹İ Ãà¼Ò
+		// ì‚¬ìš© ë¹„ìœ¨ 25%ì´í•˜ë¼ë©´ í¬ê¸° ì ˆë°˜ ì¶•ì†Œ
 		if (size <= (0.25 * arr.length)) {
 			resize((1/2) * arr.length);
 		}
 	}
 	
-	//»èÁ¦ ¸Ş¼Òµå - Áß°£ ¿ø¼Ò »èÁ¦
+	//ì‚­ì œ ë©”ì†Œë“œ - ì¤‘ê°„ ì›ì†Œ ì‚­ì œ
 	void remove_mid(int k) {
-		arr[k] = null;  // »èÁ¦
+		arr[k] = null;  // ì‚­ì œ
 		
-		for (int i = k + 1; i < size; i++) { // ºñ¿öÁø ÀÚ¸® Ã¤¿öÁÖ±â
+		for (int i = k + 1; i < size; i++) { // ë¹„ì›Œì§„ ìë¦¬ ì±„ì›Œì£¼ê¸°
 			arr[i - 1] = arr[i];
 		}
 		size--;
 		
 		
-		// »ç¿ë ºñÀ² 25%ÀÌÇÏ¶ó¸é Å©±â Àı¹İ Ãà¼Ò
+		// ì‚¬ìš© ë¹„ìœ¨ 25%ì´í•˜ë¼ë©´ í¬ê¸° ì ˆë°˜ ì¶•ì†Œ
 		if (size <= (0.25 * arr.length)) {
 			resize((1/2) * arr.length);
 		}
@@ -108,9 +107,9 @@ class myArray <E> {
 	
 	
 	////////////
-	// ÇöÀç ÀúÀåµÈ µ¥ÀÌÅÍ ¼ø¼­´ë·Î Ãâ·ÂÇÏ´Â ¸Ş¼Òµå 
+	// í˜„ì¬ ì €ì¥ëœ ë°ì´í„° ìˆœì„œëŒ€ë¡œ ì¶œë ¥í•˜ëŠ” ë©”ì†Œë“œ 
 	void print_all() {
-		System.out.print("ÇöÀç ÀúÀåµÈ µ¥ÀÌÅÍ: ");
+		System.out.print("í˜„ì¬ ì €ì¥ëœ ë°ì´í„°: ");
 		for (int i=0; i<size; i++) {
 			System.out.print(arr[i] + " ");
 		}
@@ -121,50 +120,50 @@ class myArray <E> {
 	
 	
 }
-class Poly {  // StringÀ¸·Î ÀÔ·Â¹ŞÀº ´ÙÇ×½ÄÀ» ¹è¿­·Î ÀúÀåÇØÁÖ´Â Å¬·¡½º
-	String[] mono; // ´ÙÇ×½Ä ³»ÀÇ ´ÜÇ×µéÀ» Ç×¸ñÀ¸·Î ÀúÀåÇÑ ¹è¿­.
-	int highestDeg;// ´ÙÇ×½Ä ÃÖ°íÂ÷Ç×ÀÇ Â÷¼ö.
+class Poly {  // Stringìœ¼ë¡œ ì…ë ¥ë°›ì€ ë‹¤í•­ì‹ì„ ë°°ì—´ë¡œ ì €ì¥í•´ì£¼ëŠ” í´ë˜ìŠ¤
+	String[] mono; // ë‹¤í•­ì‹ ë‚´ì˜ ë‹¨í•­ë“¤ì„ í•­ëª©ìœ¼ë¡œ ì €ì¥í•œ ë°°ì—´.
+	int highestDeg;// ë‹¤í•­ì‹ ìµœê³ ì°¨í•­ì˜ ì°¨ìˆ˜.
 	myArray<Integer> poly;
 	
 	Poly(String p) {
-		p=p.replace("^",""); //'^' ¾ø¾Ö±â
-		mono = p.split("\\+"); //+±âÁØÀ¸·Î splitÇÏ¿© ´ÜÇ×µéÀ» ¹è¿­·Î.
-		highestDeg = 0; // ´ÙÇ×½ÄÀÇ Â÷¼ö
+		p=p.replace("^",""); //'^' ì—†ì• ê¸°
+		mono = p.split("\\+"); //+ê¸°ì¤€ìœ¼ë¡œ splití•˜ì—¬ ë‹¨í•­ë“¤ì„ ë°°ì—´ë¡œ.
+		highestDeg = 0; // ë‹¤í•­ì‹ì˜ ì°¨ìˆ˜
 		
-		//´ÙÇ×½ÄÀÇ Â÷¼ö (highestDeg) ±¸ÇÏ´Â °úÁ¤
+		//ë‹¤í•­ì‹ì˜ ì°¨ìˆ˜ (highestDeg) êµ¬í•˜ëŠ” ê³¼ì •
 		if (mono[0].indexOf('x') == mono[0].length()-1) {
-			highestDeg = 1;  //'x'ÀÌÈÄ·Î ¾Æ¹«°Íµµ ¾ø´Ù¸é Â÷¼ö´Â 1.
+			highestDeg = 1;  //'x'ì´í›„ë¡œ ì•„ë¬´ê²ƒë„ ì—†ë‹¤ë©´ ì°¨ìˆ˜ëŠ” 1.
 		}
 		else {
-			highestDeg = Integer.parseInt(  mono[0].substring( mono[0].indexOf('x')+1 )  ); // 'x'ÀÌÈÄÀÇ ¹®ÀÚ¿­(Â÷¼öºÎºĞ)À» Á¤¼ö·Î.
+			highestDeg = Integer.parseInt(  mono[0].substring( mono[0].indexOf('x')+1 )  ); // 'x'ì´í›„ì˜ ë¬¸ìì—´(ì°¨ìˆ˜ë¶€ë¶„)ì„ ì •ìˆ˜ë¡œ.
 		}
 		
-		// ¹è¿­ »ı¼º
-		poly = new myArray<Integer>(highestDeg + 1); // °è¼öµéÀ» ¾Ë¸ÂÀº ÀÎµ¦½º¿¡ ÀúÀåÇØ³õÀº ¹è¿­.
+		// ë°°ì—´ ìƒì„±
+		poly = new myArray<Integer>(highestDeg + 1); // ê³„ìˆ˜ë“¤ì„ ì•Œë§ì€ ì¸ë±ìŠ¤ì— ì €ì¥í•´ë†“ì€ ë°°ì—´.
 
-		for (int i=0; i <= highestDeg; i++) {  // ±âº» °ª 0À¸·Î ¸ÕÀú Ã¤¿öµÎ±â.
+		for (int i=0; i <= highestDeg; i++) {  // ê¸°ë³¸ ê°’ 0ìœ¼ë¡œ ë¨¼ì € ì±„ì›Œë‘ê¸°.
 			poly.add(0);
 		}
 		
 		
-		int coeff; //°è¼ö
-		int degree; //Â÷¼ö
+		int coeff; //ê³„ìˆ˜
+		int degree; //ì°¨ìˆ˜
 		
-		//mono¹è¿­À» ÀüºÎ Å½»ö, Áï ¸ğµç ´ÜÇ×µé¿¡ ´ëÇØ µûÁ®º¸±â
-		for (int j = 0; j < mono.length; j++) { // °è¼öµéÀ» ¹è¿­ÀÇ °¢ÀÚ ¸Â´Â ÀÎµ¦½º(Â÷¼ö)¿¡ ÀúÀåÇÏ´Â °úÁ¤.
-			int x = mono[j].indexOf('x'); // 'x'ÀÇ ÀÎµ¦½º
-			if (x == -1) { //»ó¼öÇ×ÀÌ¶ó¸é
+		//monoë°°ì—´ì„ ì „ë¶€ íƒìƒ‰, ì¦‰ ëª¨ë“  ë‹¨í•­ë“¤ì— ëŒ€í•´ ë”°ì ¸ë³´ê¸°
+		for (int j = 0; j < mono.length; j++) { // ê³„ìˆ˜ë“¤ì„ ë°°ì—´ì˜ ê°ì ë§ëŠ” ì¸ë±ìŠ¤(ì°¨ìˆ˜)ì— ì €ì¥í•˜ëŠ” ê³¼ì •.
+			int x = mono[j].indexOf('x'); // 'x'ì˜ ì¸ë±ìŠ¤
+			if (x == -1) { //ìƒìˆ˜í•­ì´ë¼ë©´
 				poly.remove_last();
 				poly.insert_last(Integer.parseInt(mono[j]));
 			}
 			else {
-				coeff = Integer.parseInt(mono[j].substring(0, x)); // 'x' ÀÌÀü ¹®ÀÚ¿­(°è¼öºÎºĞ)À» Á¤¼ö·Î º¯È¯.
-				if (x == mono[j].length() - 1) { // 'x'°¡ Ç×ÀÇ ¸¶Áö¸·ÀÌ¶ó¸é 1Â÷Ç×ÀÌ¹Ç·Î.
+				coeff = Integer.parseInt(mono[j].substring(0, x)); // 'x' ì´ì „ ë¬¸ìì—´(ê³„ìˆ˜ë¶€ë¶„)ì„ ì •ìˆ˜ë¡œ ë³€í™˜.
+				if (x == mono[j].length() - 1) { // 'x'ê°€ í•­ì˜ ë§ˆì§€ë§‰ì´ë¼ë©´ 1ì°¨í•­ì´ë¯€ë¡œ.
 					degree = 1;
-				} else { // 'x' ÀÌÈÄ ¹®ÀÚ¿­(Â÷¼öºÎºĞ)À» Á¤¼ö·Î º¯È¯.
+				} else { // 'x' ì´í›„ ë¬¸ìì—´(ì°¨ìˆ˜ë¶€ë¶„)ì„ ì •ìˆ˜ë¡œ ë³€í™˜.
 					degree = Integer.parseInt(mono[j].substring(x + 1));
 				}
-				poly.remove_mid(highestDeg - degree); // °è¼ö°¡ µé¾î°¥ À§Ä¡.
+				poly.remove_mid(highestDeg - degree); // ê³„ìˆ˜ê°€ ë“¤ì–´ê°ˆ ìœ„ì¹˜.
 				poly.insert_mid(highestDeg - degree, coeff);
 			}
 
@@ -179,25 +178,25 @@ public class Main {
 		// TODO Auto-generated method stub
 		Scanner scanner = new Scanner(System.in);
 		
-		// 1. ¹è¿­ »ı¼ºÇÏ±â
-		System.out.print("»ı¼ºÇÒ ¹è¿­ÀÇ ÃÑ ±æÀÌ¸¦ Á¤ÇØÁÖ¼¼¿ä: ");
+		// 1. ë°°ì—´ ìƒì„±í•˜ê¸°
+		System.out.print("ìƒì„±í•  ë°°ì—´ì˜ ì´ ê¸¸ì´ë¥¼ ì •í•´ì£¼ì„¸ìš”: ");
 		int len = scanner.nextInt();
 		
 		myArray<String> mine = new myArray<String>(len);
 		
-		int cnt = 0; // »ç¿ëÀÚ°¡ ¸î¹ø ÀÔ·ÂÇß´ÂÁö Ã¼Å©ÇÒ º¯¼ö (size°³¸¦ ³ÑÁö ¾Ê°Ô ÇÏ±â À§ÇØ)
-		System.out.println("¹è¿­¿¡ ÀúÀåÇÒ µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä (" + len +"°³ ÀÌÇÏ, Á¾·áÇÏ·Á¸é exit ÀÔ·Â)");
+		int cnt = 0; // ì‚¬ìš©ìê°€ ëª‡ë²ˆ ì…ë ¥í–ˆëŠ”ì§€ ì²´í¬í•  ë³€ìˆ˜ (sizeê°œë¥¼ ë„˜ì§€ ì•Šê²Œ í•˜ê¸° ìœ„í•´)
+		System.out.println("ë°°ì—´ì— ì €ì¥í•  ë°ì´í„°ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš” (" + len +"ê°œ ì´í•˜, ì¢…ë£Œí•˜ë ¤ë©´ exit ì…ë ¥)");
 		while (true) {
-			System.out.print("ÀúÀåÇÒ µ¥ÀÌÅÍ: ");
+			System.out.print("ì €ì¥í•  ë°ì´í„°: ");
 			String item = scanner.next();
 			
 			if (item.equals("exit")) {
 				break;
 			}
-			mine.add(item);    // ÀÔ·Â È½¼ö°¡ size°³¸¦ ³Ñ°Ü¼­ ¸Ş¼Òµå ½ÇÇàµÇ´õ¶óµµ ¸Ş¼Òµå¿¡¼­ if¹®À¸·Î Á¶°Ç °É¾îÁÖ¾ú±â ¶§¹®¿¡ ÀúÀå ¾ÈµÊ.
+			mine.add(item);    // ì…ë ¥ íšŸìˆ˜ê°€ sizeê°œë¥¼ ë„˜ê²¨ì„œ ë©”ì†Œë“œ ì‹¤í–‰ë˜ë”ë¼ë„ ë©”ì†Œë“œì—ì„œ ifë¬¸ìœ¼ë¡œ ì¡°ê±´ ê±¸ì–´ì£¼ì—ˆê¸° ë•Œë¬¸ì— ì €ì¥ ì•ˆë¨.
 			cnt++;
-			if ( cnt > mine.size ) {  // »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ È½¼ö°¡ size°³¸¦ ³Ñ°åÀ» ¶§
-				System.out.println("¹è¿­ÀÌ ÀÌ¹Ì °¡µæ Ã¡½À´Ï´Ù. " + mine.size + " ¹øÂ°±îÁö¸¸ ÀúÀåµÇ¾ú½À´Ï´Ù.");
+			if ( cnt > mine.size ) {  // ì‚¬ìš©ìê°€ ì…ë ¥í•œ íšŸìˆ˜ê°€ sizeê°œë¥¼ ë„˜ê²¼ì„ ë•Œ
+				System.out.println("ë°°ì—´ì´ ì´ë¯¸ ê°€ë“ ì°¼ìŠµë‹ˆë‹¤. " + mine.size + " ë²ˆì§¸ê¹Œì§€ë§Œ ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
 				break;
 			}
 		}
@@ -206,22 +205,22 @@ public class Main {
 		mine.print_all();
 		System.out.println();
 		
-		//2. °ª °¡Á®¿À±â
-		System.out.println("1. °ª °¡Á®¿À±â");
+		//2. ê°’ ê°€ì ¸ì˜¤ê¸°
+		System.out.println("1. ê°’ ê°€ì ¸ì˜¤ê¸°");
 		
-		System.out.print("°¡Á®¿Ã µ¥ÀÌÅÍÀÇ ÀÎµ¦½º ÀÔ·Â: ");
+		System.out.print("ê°€ì ¸ì˜¬ ë°ì´í„°ì˜ ì¸ë±ìŠ¤ ì…ë ¥: ");
 		int index = scanner.nextInt();
 		
-		String data = mine.peek(index);   // bring¸Ş¼Òµå¸¦ È£ÃâÇØ µ¥ÀÌÅÍ ¹İÈ¯.
+		String data = mine.peek(index);   // bringë©”ì†Œë“œë¥¼ í˜¸ì¶œí•´ ë°ì´í„° ë°˜í™˜.
 		
 		while (true) {
-			//bring¸Ş¼Òµå¿¡¼­ ¹üÀ§¸¦ ¹ş¾î³­ ÀÎµ¦½º ÀÔ·Â½Ã null¹İÈ¯, ¿Ã¹Ù¸¥ ÀÎµ¦½º ÀÔ·Â½Ã µ¥ÀÌÅÍ ¹İÈ¯.
+			//bringë©”ì†Œë“œì—ì„œ ë²”ìœ„ë¥¼ ë²—ì–´ë‚œ ì¸ë±ìŠ¤ ì…ë ¥ì‹œ nullë°˜í™˜, ì˜¬ë°”ë¥¸ ì¸ë±ìŠ¤ ì…ë ¥ì‹œ ë°ì´í„° ë°˜í™˜.
 			if (data != null) {    
-				System.out.println("¿äÃ»ÇÏ½Å ÀÎµ¦½ºÀÇ Ç×¸ñÀº: " + data);
+				System.out.println("ìš”ì²­í•˜ì‹  ì¸ë±ìŠ¤ì˜ í•­ëª©ì€: " + data);
 				break;
 			}
 			else {
-				System.out.print("¹üÀ§¸¦ ¹ş¾î³­ ÀÎµ¦½º. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä: ");
+				System.out.print("ë²”ìœ„ë¥¼ ë²—ì–´ë‚œ ì¸ë±ìŠ¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”: ");
 				index = scanner.nextInt();
 				data = mine.peek(index);
 			}
@@ -229,24 +228,24 @@ public class Main {
 		System.out.println();
 
 		
-		//3. »ğÀÔ »èÁ¦
-		System.out.println("2-1. ¸Ç ³¡¿¡ ¿ø¼Ò »ğÀÔÇÏ±â");
+		//3. ì‚½ì… ì‚­ì œ
+		System.out.println("2-1. ë§¨ ëì— ì›ì†Œ ì‚½ì…í•˜ê¸°");
 		
-		System.out.print("¸Ç ³¡¿¡ »ğÀÔÇÏ½Ç ¿ø¼Ò¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+		System.out.print("ë§¨ ëì— ì‚½ì…í•˜ì‹¤ ì›ì†Œë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
 		data = scanner.next();
 		mine.insert_last(data);
 		mine.print_all();
 		System.out.println();
 		
-		System.out.println("2-2. Áß°£¿¡ ¿ø¼Ò »ğÀÔÇÏ±â");
+		System.out.println("2-2. ì¤‘ê°„ì— ì›ì†Œ ì‚½ì…í•˜ê¸°");
 		
-		System.out.print("Áß°£¿¡ »ğÀÔÇÏ½Ç ¿ø¼Ò¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+		System.out.print("ì¤‘ê°„ì— ì‚½ì…í•˜ì‹¤ ì›ì†Œë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
 		data = scanner.next();
-		System.out.print("»ğÀÔÇÏ½Ç À§Ä¡(ÀÎµ¦½º)¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+		System.out.print("ì‚½ì…í•˜ì‹¤ ìœ„ì¹˜(ì¸ë±ìŠ¤)ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
 		while (true) {
 			int k = scanner.nextInt();
 			if ((k >= mine.size) || (k < 0)) {
-				System.out.print("¹üÀ§¸¦ ¹ş¾î³­ ÀÎµ¦½º. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä: ");
+				System.out.print("ë²”ìœ„ë¥¼ ë²—ì–´ë‚œ ì¸ë±ìŠ¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”: ");
 			}
 			else {
 				mine.insert_mid(k, data);
@@ -258,22 +257,22 @@ public class Main {
 		System.out.println();
 
 		
-		System.out.println("2-3. ¸Ç ³¡ÀÇ ¿ø¼Ò »èÁ¦ÇÏ±â");
+		System.out.println("2-3. ë§¨ ëì˜ ì›ì†Œ ì‚­ì œí•˜ê¸°");
 		
 		mine.remove_last();
-		System.out.println("»èÁ¦µÇ¾ú½À´Ï´Ù.");
+		System.out.println("ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
 		mine.print_all();
 		System.out.println();
 
 		
 		
-		System.out.println("2-4. Áß°£ÀÇ ¿ø¼Ò »èÁ¦ÇÏ±â");
+		System.out.println("2-4. ì¤‘ê°„ì˜ ì›ì†Œ ì‚­ì œí•˜ê¸°");
 		
-		System.out.print("»èÁ¦ÇÏ½Ç ¿ø¼ÒÀÇ ÀÎµ¦½º¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+		System.out.print("ì‚­ì œí•˜ì‹¤ ì›ì†Œì˜ ì¸ë±ìŠ¤ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
 		while (true) {
 			int k = scanner.nextInt();
-			if ((k >= mine.size) || (k < 0)) { // underflow ¹ß»ı½Ã
-				System.out.print("¹üÀ§¸¦ ¹ş¾î³­ ÀÎµ¦½º. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä: ");
+			if ((k >= mine.size) || (k < 0)) { // underflow ë°œìƒì‹œ
+				System.out.print("ë²”ìœ„ë¥¼ ë²—ì–´ë‚œ ì¸ë±ìŠ¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”: ");
 			}
 			else {
 				mine.remove_mid(k);
@@ -283,22 +282,22 @@ public class Main {
 		mine.print_all();
 		System.out.println();
 		
-//////////// ¹è¿­ÀÇ ÀÀ¿ë- ´ÙÇ×½Ä //////////////
-		System.out.println("´ÙÇ×½ÄÀÇ µ¡¼À | ´ÙÇ×½Ä ÀÔ·Â ¿¹: 4x^5+2x+4");
-		System.out.print("Ã¹ ¹øÂ° ´ÙÇ×½ÄÀ» ÀÔ·ÂÇÏ¼¼¿ä: ");
+//////////// ë°°ì—´ì˜ ì‘ìš©- ë‹¤í•­ì‹ //////////////
+		System.out.println("ë‹¤í•­ì‹ì˜ ë§ì…ˆ | ë‹¤í•­ì‹ ì…ë ¥ ì˜ˆ: 4x^5+2x+4");
+		System.out.print("ì²« ë²ˆì§¸ ë‹¤í•­ì‹ì„ ì…ë ¥í•˜ì„¸ìš”: ");
 		String a = scanner.next();
 		Poly A = new Poly(a);
 		
-		System.out.print("µÎ ¹øÂ° ´ÙÇ×½ÄÀ» ÀÔ·ÂÇÏ¼¼¿ä: ");
+		System.out.print("ë‘ ë²ˆì§¸ ë‹¤í•­ì‹ì„ ì…ë ¥í•˜ì„¸ìš”: ");
 		String b = scanner.next();
 		Poly B = new Poly(b);
 		
-		int newDegree = A.highestDeg; // µÎ ´ÙÇ×½ÄÀ» ´õÇÑ ´ÙÇ×½ÄÀÇ Â÷¼ö¸¦ ÀúÀåÇÏ´Â º¯¼ö
+		int newDegree = A.highestDeg; // ë‘ ë‹¤í•­ì‹ì„ ë”í•œ ë‹¤í•­ì‹ì˜ ì°¨ìˆ˜ë¥¼ ì €ì¥í•˜ëŠ” ë³€ìˆ˜
 		if (B.highestDeg > A.highestDeg) {
 			newDegree = B.highestDeg;
 		}
-		myArray<Integer> newPoly = new myArray<Integer>(newDegree + 1);  //´õÇÑ °á°úÀÇ ´ÙÇ×½Ä °è¼ö¸¦ ÀúÀåÇÏ´Â ¹è¿­.
-		//ÀüºÎ 0À¸·Î Ã¤¿öµÎ±â.
+		myArray<Integer> newPoly = new myArray<Integer>(newDegree + 1);  //ë”í•œ ê²°ê³¼ì˜ ë‹¤í•­ì‹ ê³„ìˆ˜ë¥¼ ì €ì¥í•˜ëŠ” ë°°ì—´.
+		//ì „ë¶€ 0ìœ¼ë¡œ ì±„ì›Œë‘ê¸°.
 		for (int i=0; i<newDegree+1; i++) {
 			newPoly.add(0);
 		}
@@ -310,7 +309,7 @@ public class Main {
 			}
 		}
 		if (B.highestDeg > A.highestDeg) {
-			//Â÷¼ö°¡ Â÷ÀÌ³ª´Â ¸¸Å­ ÀÛÀº Â÷¼öÀÇ ´ÙÇ×½Ä ¾Õ¿¡ 0À» »ğÀÔÇØÁØ´Ù. (Å©±â ¸ÂÃçÁÖ±â À§ÇØ)
+			//ì°¨ìˆ˜ê°€ ì°¨ì´ë‚˜ëŠ” ë§Œí¼ ì‘ì€ ì°¨ìˆ˜ì˜ ë‹¤í•­ì‹ ì•ì— 0ì„ ì‚½ì…í•´ì¤€ë‹¤. (í¬ê¸° ë§ì¶°ì£¼ê¸° ìœ„í•´)
 			for (int i=0; i<B.highestDeg-A.highestDeg; i++) { 
 				A.poly.insert_mid(i, 0);
 			}
@@ -328,14 +327,14 @@ public class Main {
 				newPoly.insert_mid(i, B.poly.peek(i) + A.poly.peek(i));
 			}
 		}
-		//°è¼ö ÀúÀå ¿Ï·á.
+		//ê³„ìˆ˜ ì €ì¥ ì™„ë£Œ.
 		
-		// ´ÙÇ×½Ä ÇüÅÂ·Î Ãâ·Â
+		// ë‹¤í•­ì‹ í˜•íƒœë¡œ ì¶œë ¥
 		for (int i=0; i<newDegree+1; i++) {
 
-			if (newPoly.peek(i) != 0) { // °è¼ö°¡ 0 ÀÌ ¾Æ´Ï¶ó¸é Ãâ·ÂÇÏµµ·Ï.
+			if (newPoly.peek(i) != 0) { // ê³„ìˆ˜ê°€ 0 ì´ ì•„ë‹ˆë¼ë©´ ì¶œë ¥í•˜ë„ë¡.
 				
-				if (i == newDegree) {  // ¸¶Áö¸· »ó¼ö´Â Ãâ·Â ÇüÅÂ ´Ù¸§.
+				if (i == newDegree) {  // ë§ˆì§€ë§‰ ìƒìˆ˜ëŠ” ì¶œë ¥ í˜•íƒœ ë‹¤ë¦„.
 					System.out.print(newPoly.peek(i));
 				}
 				else {
